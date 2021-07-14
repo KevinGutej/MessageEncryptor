@@ -3,6 +3,8 @@ print("1. Encrypt Message")
 print("2. Decript Message")
 option = int(input())
 
+### Hello Kevin
+
 if option == 1:
     message = open('test.txt')
     textmessage = message.read()
