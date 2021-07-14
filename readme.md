@@ -1,8 +1,24 @@
+<h1>Ceaser Cipher Code Breaker</h1> 
+
+This program will allow you to under stand how to break Ceasers Ciphers code and how he used to communicate in the old times.
+
+
+
+
+##Installation:
+Use the link to download code(GitHub):
+https://github.com/KevinGutej/MessageEncryptor
+
+Here are your options:
+```python
 print("Message Encryptor")
 print("1. Encrypt Message")
 print("2. Decript Message")
-option = int(input())
+```
 
+
+Main Part of the code:
+```python
 if option == 1:
     message = open('test.txt')
     textmessage = message.read()
@@ -32,3 +48,7 @@ print
 "Shift pattern : " + str(s)
 print
 "Cipher: " + encrypt(text, s)
+```
+
+License(Please read if you are unsure of anything...)
+[CLICK HERE!!](https://choosealicense.com/licenses/mit/)
