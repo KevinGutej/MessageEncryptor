@@ -1,58 +1,34 @@
-
 print("Message Encryptor")
 print("1. Encrypt Message")
 print("2. Decript Message")
 option = int(input())
 
-
-def ceasarEncrypt(message, shift):
-    message = message.upper()
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    result = ""
-
-    for letter in message:
-        if letter in alphabet:
-            letter_index = (alphabet.find(letter) + shift) % len(alphabet)
-            result = result + alphabet[letter_index]
-        else:
-            result = result + letter
-    return result
-
-def ceasarDecrypt(message, shift):
-    message = message.upper()
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    result = ""
-
-    for letter in message:
-        if letter in alphabet:
-            letter_index = (alphabet.find(letter) - shift) % len(alphabet)
-            result = result + alphabet[letter_index]
-        else:
-            result = result + letter
-    return result
-
 if option == 1:
-    print("Give me txt file name:")
-    filename = input()
-    print("Give me shift")
-    shift = int(input())
-    message = open(filename)
+    message = open('test.txt')
     textmessage = message.read()
-    print(textmessage)
-    encrypt = ceasarEncrypt(textmessage, shift)
-    print(encrypt)
-    message.close()
-    newfile = open("output.txt","w")
-    newfile.write(encrypt)
-    newfile.close()
+    encrypt
 elif option == 2:
-    print("Give me txt file name:")
-    filename = input()
-    print("Give me shift")
-    shift = int(input())
-    message = open(filename)
-    textmessage = message.read()
-    print(textmessage)
-    decrypt = ceasarDecrypt(textmessage, shift)
-    print(decrypt)
-    message.close()
+
+def encrypt(text,s):
+    result = ""
+    # transverse the plain text
+    for i in range(len(text)):
+        char = text[i]
+        # Encrypt uppercase characters in plain text
+
+        if (char.isupper()):
+            result += chr((ord(char) + s - 65) % 26 + 65)
+        # Encrypt lowercase characters in plain text
+        else:
+            result += chr((ord(char) + s - 97) % 26 + 97)
+        return result
+# check the above function
+text = "CEASER CIPHER DEMO"
+s = 4
+
+print
+"Plain Text : " + text
+print
+"Shift pattern : " + str(s)
+print
+"Cipher: " + encrypt(text, s)
