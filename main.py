@@ -1,34 +1,58 @@
-print("Message Encryptor")
-print("1. Encrypt Message")
-print("2. Decript Message")
-option = int(input())
+print("Welcome in Ceasar encryptor!")
+print("Choose option")
+print("1. Encrypt message")
+print("2. Decrypt message")
+choice = int(input())
 
-if option == 1:
-    message = open('test.txt')
-    textmessage = message.read()
-    encrypt
-elif option == 2:
-
-def encrypt(text,s):
+def ceasarEncrypt(message, shift):
+    message = message.upper()
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     result = ""
-    # transverse the plain text
-    for i in range(len(text)):
-        char = text[i]
-        # Encrypt uppercase characters in plain text
 
-        if (char.isupper()):
-            result += chr((ord(char) + s - 65) % 26 + 65)
-        # Encrypt lowercase characters in plain text
+    for letter in message:
+        if letter in alphabet:
+            letter_index = (alphabet.find(letter) + shift) % len(alphabet)
+            result = result + alphabet[letter_index]
         else:
-            result += chr((ord(char) + s - 97) % 26 + 97)
-        return result
-# check the above function
-text = "CEASER CIPHER DEMO"
-s = 4
+            result = result + letter
+    return result
 
-print
-"Plain Text : " + text
-print
-"Shift pattern : " + str(s)
-print
-"Cipher: " + encrypt(text, s)
+def ceasarDecrypt(message, shift):
+    message = message.upper()
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    result = ""
+
+    for letter in message:
+        if letter in alphabet:
+            letter_index = (alphabet.find(letter) - shift) % len(alphabet)
+            result = result + alphabet[letter_index]
+        else:
+            result = result + letter
+    return result
+
+if choice == 1:
+    print("Give me txt file name:")
+    fileName = input()
+    print("Which shift?")
+    shift = int(input())
+    file = open(fileName)
+    content = file.read()
+    result = ceasarEncrypt(content, shift)
+    print(result)
+    file.close()
+    outputFile = open('output.txt', 'w')
+    outputFile.write(result)
+    outputFile.close()
+
+elif choice == 2:
+    print("Give me txt file name:")
+    fileName = input()
+    print("Which shift?")
+    shift = int(input())
+    file = open(fileName)
+    content = file.read()
+    result = ceasarDecrypt(content, shift)
+    print(result)
+
+else:
+    print("Invalid number")
